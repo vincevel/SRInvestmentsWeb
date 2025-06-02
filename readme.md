@@ -1,51 +1,89 @@
-<p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
+# SR Investments Web Financial Tracking App
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+## Overview
+This application enables customers to track financial transactions, including deposits and withdrawals, with incentives like bonuses or dividends for retaining funds. It features a REST API integration with ManyChat, a mobile chatbot serving as the primary customer touchpoint for recording transactions. Additionally, a backend admin section allows verification of deposits and withdrawals, supported by attachments such as receipts. Users can access detailed summaries and reports of their financial activities.
 
-## About Laravel
+## Problem Solved
+Customers needed a reliable, user-friendly platform to monitor financial data online, track money earned and withdrawn, and verify transactions. This system provides an efficient solution with a chatbot interface for customers and an admin backend for transaction validation.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as:
+## Features
+- Record and track deposits and withdrawals via ManyChat integration.
+- Calculate and display bonuses/dividends for funds retained in the system.
+- Generate summary reports for financial overview.
+- Admin backend for verifying transactions with receipt attachments.
+- User-friendly interface for easy navigation and data access.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Technologies Used
+- **PHP**: Backend logic and server-side processing.
+- **MySQL**: Database for storing transaction and user data.
+- **CSS**: Styling for a responsive and visually appealing interface.
+- **JavaScript / Vue.js**: Dynamic frontend for interactive user experiences.
+- **ManyChat REST API**: Integration for customer-facing transaction input via chatbot.
 
-Laravel is accessible, yet powerful, providing tools needed for large, robust applications. A superb combination of simplicity, elegance, and innovation give you tools you need to build any application with which you are tasked.
+## Installation
+1. **Clone the Repository**:
+   ```bash
+   git clone https://github.com/vincevel/SRInvestmentsWeb.git
+   ```
+2. **Navigate to the Project Directory**:
+   ```bash
+   cd SRInvestmentsWeb
+   ```
+3. **Set Up the Database**:
+   - Create a MySQL database (e.g., `sr_investments_db`).
+   - Import the `schema.sql` file to set up the necessary tables:
+     ```bash
+     mysql -u your-username -p sr_investments_db < schema.sql
+     ```
+4. **Configure Environment**:
+   - Copy the `.env.example` file to `.env`:
+     ```bash
+     cp .env.example .env
+     ```
+   - Update `.env` with your database credentials and ManyChat API key:
+     ```env
+     DB_HOST=localhost
+     DB_NAME=sr_investments_db
+     DB_USER=your-username
+     DB_PASS=your-password
+     MANYCHAT_API_KEY=your-manychat-api-key
+     ```
+5. **Install Dependencies**:
+   - Ensure PHP and Composer are installed.
+   - Run the following to install PHP dependencies:
+     ```bash
+     composer install
+     ```
+   - For frontend dependencies (Vue.js), run:
+     ```bash
+     npm install
+     ```
+6. **Set Up Web Server**:
+   - Configure your web server (e.g., Apache or Nginx) to point to the `public/` directory.
+   - For example, in Apache, set the `DocumentRoot` to `/path/to/sr-investments/public`.
+7. **Run the Application**:
+   - Start your web server and access the app via `http://localhost` or your configured domain.
+   - Optionally, use PHP's built-in server for development:
+     ```bash
+     php -S localhost:8000 -t public
+     ```
+8. **Build Frontend Assets**:
+   - Compile Vue.js assets:
+     ```bash
+     npm run dev
+     ```
+9. **Configure ManyChat Integration**:
+   - Set up a ManyChat account and obtain an API key.
+   - Ensure the chatbot is configured to send transaction data to the app's REST API endpoints (e.g., `/api/deposit`, `/api/withdraw`).
 
-## Learning Laravel
-
-Laravel has the most extensive and thorough documentation and video tutorial library of any modern web application framework. The [Laravel documentation](https://laravel.com/docs) is thorough, complete, and makes it a breeze to get started learning the framework.
-
-If you're not in the mood to read, [Laracasts](https://laracasts.com) contains over 900 video tutorials on a range of topics including Laravel, modern PHP, unit testing, JavaScript, and more. Boost the skill level of yourself and your entire team by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for helping fund on-going Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](http://patreon.com/taylorotwell):
-
-- **[Vehikl](http://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- **[Styde](https://styde.net)**
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
+## Usage
+- **Customers**: Use the ManyChat chatbot on mobile devices to record deposits and withdrawals, uploading receipts as needed.
+- **Admins**: Log into the backend admin section to verify transactions by reviewing attached receipts.
+- View incentives (bonuses/dividends) for retained funds.
+- Access summary reports to analyze financial activity via the web interface.
 
 ## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
+Contributions are welcome! Please submit a pull request or open an issue to discuss improvements or bugs.
 
 ## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
